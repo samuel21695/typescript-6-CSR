@@ -53,4 +53,14 @@ const FetchExample: React.FC<FetchExampleProps> = ({ tagName, props, url }) => {
 
     fetchData();
   }, [url]); // useEffect는 url이 변경될 때마다 재실행됩니다.
-}
+
+  // Tag 변수는 tagName으로 받은 태그 이름을 사용하여 JSX 태그를 생성합니다.
+  const Tag = tagName;
+
+  // 컴포넌트의 리턴 부분: 만약 에러기 있으면 에러메시지를, 그렇지 않으면 데이터를 표시합니다.
+  return <Tag {...props}>{error ? error : data}</Tag>; // 삼항연산자 :(콜론) 앞이 true이면 : 앞의 값이, false이면 : 뒤의 값이 리턴됩니다.
+  
+};
+
+export default FetchExample;
+
