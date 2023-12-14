@@ -64,3 +64,5 @@ const FetchExample: React.FC<FetchExampleProps> = ({ tagName, props, url }) => {
 
 export default FetchExample;
 
+// 사용 예시
+// <FetchExample tagName="div" props={{ className: 'example' }} url="http://my.server.localhost/directory" />
