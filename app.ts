@@ -32,5 +32,25 @@ const FetchExample: React.FC<FetchExampleProps> = ({ tagName, props, url }) => {
   const [data, setData] = useState<string>('로딩중');
   const [error, setError] = useState<string>('');
 
-  
+  // useEffect 훅은 컴포넌트가 마운트될 때 실행됩니다.
+  useEffect(() => {
+    // fetchData는 비동기 함수로, API에서 데이터를 가져옵니다.
+    // 바닐라 예제와 다르게 try부분에서 async 키워드를 선언한 것이 차이점입니다.
+    // 리액트의 작성방식을 따르면서도 원하는 기능을 구현하기 위한 조치입니다.
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`통신상태 불량: ${response.status}`);
+        }
+        const jsonData = await response.json();
+        setData(JSON.stringify(jsonData, null, 2));
+      } catch (e) {
+        console.error('Fetch error:', e);
+        setError('아직 데이터가 수신 되지 않았습니다.')
+      }
+    };
+
+    fetchData();
+  }, [url]); // useEffect는 url이 변경될 때마다 재실행됩니다.
 }
