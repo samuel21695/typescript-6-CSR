@@ -21,3 +21,16 @@ type FetchExampleProps = {
  * 선언할 때는 마치 매개변수처럼 사용하며, 할당할 때는 타입을 결정합니다.
  * "사용할 때 타입을 결정한다." 라는 키워드가 핵심이 됩니다.
  */
+
+// FetchExample 컴포넌트 정의: React.FC는 함수 컴포넌트를 의미합니다.
+const FetchExample: React.FC<FetchExampleProps> = ({ tagName, props, url }) => {
+  // useState 훅을 사용하여 컴포넌트의 상태를 관리합니다.
+  // data 상태는 가져온 데이터를 저장하고, error 상태는 에러 메시지를 저장합니다.
+  // 상태 데이터가 두 개 이상이기 때문에, usestate 훅을 두번 사용합니다.
+  // 너무 많은 상태를 관리하면 코드가 복잡해지기 때문에, 상태는 최소한으로 관리하는 것이 좋으며,
+  // useReducer 훅을 사용하면 상태를 더욱 효울적으로 관리할 수 있습니다.
+  const [data, setData] = useState<string>('로딩중');
+  const [error, setError] = useState<string>('');
+
+  
+}
